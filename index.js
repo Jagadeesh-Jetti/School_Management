@@ -1,4 +1,5 @@
 const express = require("express");
+const CORS = require("cors");
 const app = express();
 
 const initializeDatabase = require("./db");
@@ -7,17 +8,20 @@ const TeacherRouter = require("./routers/Teacher.router");
 
 initializeDatabase();
 
+app.use(express.json());
+app.use(cors());
+
 app.get("/", (req, res) => {
   res.send("School Management Backend");
 });
-
-app.use("/students", StudentRouter);
-app.use("/teachers", TeacherRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: "Something went wrong" });
 });
+
+app.use("/students", StudentRouter);
+app.use("/teachers", TeacherRouter);
 
 const PORT = process.env.PORT || 3000;
 
