@@ -5,14 +5,14 @@ dotEnv.config({
   path: ".env",
 });
 
-const MONGOURL = process.env.MONGODB;
+const mongoURI = process.env.MONGODB;
 
 const initializeDatabase = () => {
-  if (!MONGOURL) {
+  if (!mongoURI) {
     console.error("Environment variables not defined");
   } else {
     mongoose
-      .connect(MONGOURL)
+      .connect(mongoURI)
       .then(() => {
         console.log("Database connected");
       })
