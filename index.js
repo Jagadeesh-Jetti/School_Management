@@ -1,5 +1,5 @@
 const express = require("express");
-const CORS = require("cors");
+const cors = require("cors");
 const app = express();
 
 const initializeDatabase = require("./db");
@@ -9,7 +9,7 @@ const TeacherRouter = require("./routers/Teacher.router");
 initializeDatabase();
 
 app.use(express.json());
-app.use(CORS());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("School Management Backend");
