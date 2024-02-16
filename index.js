@@ -9,7 +9,7 @@ const TeacherRouter = require("./routers/Teacher.router");
 initializeDatabase();
 
 app.use(express.json());
-app.use(cors());
+app.use(CORS());
 
 app.get("/", (req, res) => {
   res.send("School Management Backend");
