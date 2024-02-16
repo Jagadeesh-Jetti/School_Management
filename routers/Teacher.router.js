@@ -65,4 +65,4 @@ TeacherRouter.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = Teacher;
+module.exports = TeacherRouter;
