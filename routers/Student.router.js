@@ -5,7 +5,7 @@ const StudentRouter = express.Router();
 
 StudentRouter.get("/", async (req, res) => {
   try {
-    const studentsData = Student.find();
+    const studentsData = await Student.find();
     res.status(201).json(studentsData);
   } catch (error) {
     res.status(500).json({ error: "failed to retrieve students data" });
